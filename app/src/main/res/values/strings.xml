@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">OKCoin</string>
+
+    <!-- 主页 -->
+    <string name="tab_home">首页</string>
+    <string name="tab_quotes">行情</string>
+    <string name="tab_trading">现货</string>
+    <string name="tab_futures">合约</string>
+    <string name="tab_me">我的</string>
 </resources>

@@ -3,10 +3,10 @@ package com.shen.okcoin.base;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.SupportActivity;
 import com.shen.okcoin.App;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import me.yokeyword.fragmentation.SupportActivity;
 
 public abstract class SimpleActivity extends SupportActivity {
 
@@ -46,7 +46,13 @@ public abstract class SimpleActivity extends SupportActivity {
 
     protected abstract int getLayout();
 
+    /**
+     * 初始化数据
+     */
     protected abstract void initData();
 
+    /**
+     * 设置view
+     */
     protected abstract void setupView();
 }

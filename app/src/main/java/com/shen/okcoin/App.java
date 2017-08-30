@@ -46,6 +46,9 @@ public class App extends Application {
         }
     }
 
+    /**
+     * 退出应用
+     */
     public void exitApp() {
         if (allActivities != null) {
             synchronized (allActivities) {
