@@ -3,6 +3,7 @@ package com.shen.okcoin;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.support.multidex.MultiDex;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
@@ -38,6 +39,16 @@ public class App extends Application {
             allActivities = new HashSet<>();
         }
         allActivities.add(act);
+    }
+
+    /**
+     * 分割 Dex 支持
+     * @param base
+     */
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
 
     public void removeActivity(Activity act) {
