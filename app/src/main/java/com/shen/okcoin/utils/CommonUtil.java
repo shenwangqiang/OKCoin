@@ -8,6 +8,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.signature.ObjectKey;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -98,6 +99,21 @@ public class CommonUtil {
         }
     }
 
+    /**
+     * http错误处理
+     * @param throwable
+     */
     public static void httpError(Throwable throwable) {
+
+    }
+
+    /**
+     * 将字符串三位一个逗号显示
+     * @param str
+     * @return
+     */
+    public static String getNumStr(String str){
+        DecimalFormat df = new DecimalFormat("###,###");
+        return df.format(Double.parseDouble(str));
     }
 }

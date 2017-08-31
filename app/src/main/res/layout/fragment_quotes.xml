@@ -22,6 +22,47 @@
         app:tabSelectedTextColor="@color/blue"
         app:tabTextColor="@color/gray"/>
 
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="80dp"
+       android:paddingLeft="15dp"
+       android:paddingRight="15dp"
+       android:paddingTop="10dp"
+       android:paddingBottom="10dp"
+       android:background="@android:color/holo_blue_dark">
+       <TextView
+           android:id="@+id/tv_name"
+           style="@style/ts_white_18"
+           android:layout_marginRight="5dp"
+           android:text="@string/logo_name"/>
 
+       <TextView
+           style="@style/ts_white_10"
+           android:layout_alignBottom="@id/tv_name"
+           android:layout_toRightOf="@id/tv_name"
+           android:text="@string/coin_quote"/>
+
+       <TextView
+           android:id="@+id/tv_volume"
+           android:layout_below="@id/tv_name"
+           style="@style/ts_gray_15"/>
+
+       <TextView
+           android:layout_alignParentRight="true"
+           android:text="@string/rmb_symbol"
+           android:id="@+id/tv_symbol"
+           android:layout_marginTop="1dp"
+           style="@style/ts_gray_15"/>
+
+       <TextView
+           android:id="@+id/tv_price"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginRight="5dp"
+           android:textSize="18sp"
+           android:layout_alignBottom="@id/tv_symbol"
+           android:layout_toLeftOf="@id/tv_symbol"
+           android:textColor="@color/white"/>
+   </RelativeLayout>
 
 </LinearLayout>

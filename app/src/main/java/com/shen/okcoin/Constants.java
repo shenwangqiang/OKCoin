@@ -39,6 +39,21 @@ public class Constants {
             add("bcc_cny");
         }
     };
+
+    public static final ArrayList<String> NAME_LIST = new ArrayList<String>() {
+        /**
+         *
+         */
+        private static final long serialVersionUID = 1L;
+
+        {
+            add("BTC");
+            add("LTC");
+            add("ETH");
+            add("ETC");
+//            add("BCC");
+        }
+    };
     /**
      *
      */

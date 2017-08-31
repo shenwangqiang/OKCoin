@@ -20,4 +20,9 @@
     <string name="more_quote">更多行情</string>
 
     <string name="notice">OKCoin币行正式开放BCC业务的公告</string>
+    <!-- 行情 -->
+    <string name="logo_name">OKCoin</string>
+    <string name="coin_quote">币行</string>
+    <string name="volume">成交量 %1s</string>
+    <string name="rmb_symbol">CNY</string>
 </resources>
