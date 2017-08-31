@@ -16,7 +16,14 @@ public class Constants {
     // http
     public static final String URL_BASE = "https://www.okcoin.cn/";
 
+    // sharedPreference
     public static final String SP_GUIDE ="sp_guide";
+
+    // time millis
+    public static final long MINUTE_Millis = 60 * 1000;
+    public static final long HOUR_Millis = 60 * MINUTE_Millis;
+    public static final long DAY_Millis = 24 * HOUR_Millis;
+    public static final long WEEK_Millis = 7 * DAY_Millis;
 
     public static final ArrayList<String> CNY_LIST = new ArrayList<String>() {
         /**

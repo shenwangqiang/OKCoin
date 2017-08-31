@@ -53,6 +53,7 @@ public class HomeFragment extends SimpleFragment {
     private ArrayList<Ticker.TickerBean> mTickerBeen = new ArrayList<>();
 
     private TickerLoader mTickerLoader;
+    private Timer mTimer;
 
     @Override
     protected int getLayoutId() {
@@ -70,8 +71,8 @@ public class HomeFragment extends SimpleFragment {
         more.setName(getString(R.string.more_quote));
         mTickerBeen.add(more);
 
-        Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
+        mTimer = new Timer();
+        mTimer.schedule(new TimerTask() {
             @Override
             public void run() {
                 for(String str:Constants.CNY_LIST){
@@ -114,6 +115,16 @@ public class HomeFragment extends SimpleFragment {
         mBannerComponent.stopAutoPlay();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        mTimer.cancel();
+    }
 
     private IndicatorViewPager.IndicatorViewPagerAdapter adapter = new IndicatorViewPager.IndicatorViewPagerAdapter() {
 
@@ -157,10 +168,7 @@ public class HomeFragment extends SimpleFragment {
         }, new Action1<Throwable>() {
             @Override
             public void call(Throwable throwable) {
-                if (throwable instanceof Fault) {
-                    Fault fault = (Fault) throwable;
-//                    ToastUtil.shortShow(fault.getMessage());
-                }
+                CommonUtil.httpError(throwable);
             }
         });
     }

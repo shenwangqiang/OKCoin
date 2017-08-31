@@ -1,6 +1,11 @@
 package com.shen.okcoin.http.business.ticker;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.shen.okcoin.model.entity.Line;
 import com.shen.okcoin.model.entity.Ticker;
+
+import java.util.ArrayList;
 
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -61,7 +66,7 @@ public interface TickerService {
      * @return
      */
     @GET("api/v1/kline.do")
-    Observable<Ticker> getKLine(@Query("symbol") String symbol, @Query("type") String type,
-                                @Query("size") String size, @Query("since") long since);
+    Observable<ArrayList<String[]>> getKLine(@Query("symbol") String symbol, @Query("type") String type,
+                                   @Query("size") int size, @Query("since") long since);
 
 }

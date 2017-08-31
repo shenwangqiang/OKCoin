@@ -97,4 +97,7 @@ public class CommonUtil {
             Glide.with(context).load(url).apply(options).into(imageView);
         }
     }
+
+    public static void httpError(Throwable throwable) {
+    }
 }
