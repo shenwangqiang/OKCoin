@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">OKCoin</string>
 
+    <string name="enter">进 入</string>
     <!-- 主页 -->
     <string name="tab_home">首页</string>
     <string name="tab_quotes">行情</string>

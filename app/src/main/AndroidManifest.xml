@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.shen.okcoin.ui.activity.MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.shen.okcoin.ui.activity.GudieActivity" android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

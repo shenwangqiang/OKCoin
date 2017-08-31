@@ -8,6 +8,7 @@ import com.shen.okcoin.R;
 import com.shen.okcoin.base.SimpleActivity;
 
 public class SplashActivity extends SimpleActivity {
+    private boolean mFlag = true;
     @Override
     protected void onCreate(Bundle mBundle) {
         super.onCreate(mBundle);
@@ -28,7 +29,7 @@ public class SplashActivity extends SimpleActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(mContext,MainActivity.class));
+                startActivity(new Intent(mContext,mFlag?GudieActivity.class:MainActivity.class));
                 finish();
             }
         }, 2000);

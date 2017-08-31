@@ -1,9 +1,11 @@
 package com.shen.okcoin.ui.fragment;
 
 import android.content.Intent;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.support.v4.view.ViewPager;
 import android.support.v7.view.menu.MenuAdapter;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -94,6 +96,8 @@ public class HomeFragment extends SimpleFragment {
 
         mLayoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
         mRvQuote.setLayoutManager(mLayoutManager);
+//        mRvQuote.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.HORIZONTAL));
+        mRvQuote.setHasFixedSize(true);
         mQuoteAdapter = new QuoteAdapter(mContext, mTickerBeen);
         mRvQuote.setAdapter(mQuoteAdapter);
     }
@@ -147,6 +151,8 @@ public class HomeFragment extends SimpleFragment {
                 ticker.getTicker().setName(Constants.CNY_MAP.get(cny));
                 mTickerBeen.set(position,ticker.getTicker());
                 mQuoteAdapter.notifyItemChanged(position);
+
+//                mQuoteAdapter.notifyItemChanged(position,ticker);
             }
         }, new Action1<Throwable>() {
             @Override
