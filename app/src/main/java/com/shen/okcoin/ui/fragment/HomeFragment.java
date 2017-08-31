@@ -24,6 +24,8 @@ import com.shizhefei.view.indicator.slidebar.ColorBar;
 import com.shizhefei.view.indicator.slidebar.ScrollBar;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.BindView;
 import rx.functions.Action1;
@@ -48,6 +50,8 @@ public class HomeFragment extends SimpleFragment {
     private QuoteAdapter mQuoteAdapter;
     private ArrayList<Ticker.TickerBean> mTickerBeen = new ArrayList<>();
 
+    private TickerLoader mTickerLoader;
+
     @Override
     protected int getLayoutId() {
         return R.layout.fragment_home;
@@ -55,10 +59,24 @@ public class HomeFragment extends SimpleFragment {
 
     @Override
     protected void initData() {
+        mTickerLoader  = new TickerLoader();
         for(String str:Constants.CNY_LIST){
             mTickerBeen.add(new Ticker.TickerBean());
-            getTicker(str);
         }
+        Ticker.TickerBean more = new Ticker.TickerBean();
+        more.setLast("");
+        more.setName(getString(R.string.more_quote));
+        mTickerBeen.add(more);
+
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                for(String str:Constants.CNY_LIST){
+                    getTicker(str);
+                }
+            }
+        }, 0, 2000);
     }
 
     @Override
@@ -122,12 +140,13 @@ public class HomeFragment extends SimpleFragment {
     };
 
     private void getTicker(final String cny){
-        new TickerLoader().getTicker(cny).subscribe(new Action1<Ticker>() {
+        mTickerLoader.getTicker(cny).subscribe(new Action1<Ticker>() {
             @Override
             public void call(Ticker ticker) {
+                int position = Constants.CNY_LIST.indexOf(cny);
                 ticker.getTicker().setName(Constants.CNY_MAP.get(cny));
-                mTickerBeen.set(Constants.CNY_LIST.indexOf(cny),ticker.getTicker());
-                mQuoteAdapter.notifyDataSetChanged();
+                mTickerBeen.set(position,ticker.getTicker());
+                mQuoteAdapter.notifyItemChanged(position);
             }
         }, new Action1<Throwable>() {
             @Override

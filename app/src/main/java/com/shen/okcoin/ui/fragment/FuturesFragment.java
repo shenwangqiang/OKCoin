@@ -9,7 +9,7 @@ import com.shen.okcoin.base.SimpleFragment;
 public class FuturesFragment extends SimpleFragment {
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_futures;
     }
 
     @Override

@@ -22,8 +22,11 @@ public class QuoteAdapter extends BaseQuickAdapter<Ticker.TickerBean, BaseViewHo
 
     @Override
     protected void convert(BaseViewHolder helper, Ticker.TickerBean item) {
-        helper.setText(R.id.tv_name, mContext.getString(R.string.price,item.getName()))
+        boolean flag = !"".equals(item.getLast());
+        helper.setText(R.id.tv_name, flag?mContext.getString(R.string.price,item.getName()):item.getName())
                 .setText(R.id.tv_last, mContext.getString(R.string.rmb, item.getLast()))
-                .setText(R.id.tv_count, item.getVol());
+                .setText(R.id.tv_count, item.getVol())
+                .setVisible(R.id.tv_last,flag)
+                .setVisible(R.id.tv_count,flag);
     }
 }

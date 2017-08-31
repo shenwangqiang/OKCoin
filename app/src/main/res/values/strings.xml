@@ -9,13 +9,14 @@
     <string name="tab_me">我的</string>
 
     <string name="price">%1s价格</string>
-    <string name="rmb">￥ %1s</string>
+    <string name="rmb">￥%1s</string>
 
     <string name="btc_cny">比特币</string>
     <string name="ltc_cny">莱特币</string>
     <string name="eth_cny">以太坊</string>
     <string name="etc_cny">以太经典</string>
     <string name="bcc_cny">比特现金</string>
+    <string name="more_quote">更多行情</string>
 
     <string name="notice">OKCoin币行正式开放BCC业务的公告</string>
 </resources>

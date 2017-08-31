@@ -14,9 +14,9 @@
         <TextView
             android:id="@+id/tv_add"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:textColor="@color/blue"
             android:background="@color/white"
             android:gravity="center"

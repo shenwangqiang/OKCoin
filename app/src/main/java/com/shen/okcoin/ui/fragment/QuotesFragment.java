@@ -9,7 +9,7 @@ import com.shen.okcoin.base.SimpleFragment;
 public class QuotesFragment extends SimpleFragment {
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_quotes;
     }
 
     @Override
