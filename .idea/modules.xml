@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/OKCoin.iml" filepath="$PROJECT_DIR$/OKCoin.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/httpLoglibrary/httpLoglibrary.iml" filepath="$PROJECT_DIR$/httpLoglibrary/httpLoglibrary.iml" />
     </modules>
   </component>
 </project>

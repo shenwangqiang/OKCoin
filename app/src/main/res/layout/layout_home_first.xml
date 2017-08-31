@@ -13,15 +13,30 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/vp_banner"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
 
 
         <com.shizhefei.view.indicator.FixedIndicatorView
             android:id="@+id/fiv_indicator"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:layout_gravity="right|bottom" />
+            android:layout_gravity="right|bottom"/>
     </FrameLayout>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_quote"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/white"
+        android:orientation="vertical"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_marginTop="1px"
+        android:layout_height="35dp"
+        android:paddingLeft="15dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:text="@string/notice"/>
 
 </LinearLayout>
