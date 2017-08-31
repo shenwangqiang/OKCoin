@@ -6,6 +6,8 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.shen.okcoin.R;
@@ -33,6 +35,9 @@ public class GudieActivity extends SimpleActivity {
 
     @Override
     protected int getLayout() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         return R.layout.activity_gudie;
     }
 
@@ -43,6 +48,7 @@ public class GudieActivity extends SimpleActivity {
 
     @Override
     protected void setupView() {
+
         mIndicatorViewPager = new IndicatorViewPager(mFivIndicator, mVpGudie);
         mIndicatorViewPager.setAdapter(adapter);
         mVpGudie.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

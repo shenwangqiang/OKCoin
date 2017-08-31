@@ -16,6 +16,8 @@ public class Constants {
     // http
     public static final String URL_BASE = "https://www.okcoin.cn/";
 
+    public static final String SP_GUIDE ="sp_guide";
+
     public static final ArrayList<String> CNY_LIST = new ArrayList<String>() {
         /**
          *
@@ -47,6 +49,7 @@ public class Constants {
             put("bcc_cny", "比特现金");
         }
     };
+
 
 
 }
