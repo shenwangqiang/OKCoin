@@ -1,6 +1,7 @@
 package com.shen.okcoin.ui.fragment;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
@@ -16,6 +17,9 @@ import com.shen.okcoin.http.business.ticker.TickerLoader;
 import com.shen.okcoin.model.entity.Line;
 import com.shen.okcoin.model.entity.Ticker;
 import com.shen.okcoin.utils.CommonUtil;
+
+import org.simple.eventbus.EventBus;
+import org.simple.eventbus.Subscriber;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -45,6 +49,7 @@ public class QuotesFragment extends SimpleFragment {
      * 上一次价格
      */
     private float mLastPrice;
+    private Drawable mUp, mDown;
 
     private String mCNY = Constants.CNY_LIST.get(0);
     private Timer mTimer;
@@ -58,17 +63,35 @@ public class QuotesFragment extends SimpleFragment {
 
     @Override
     protected void initData() {
+        mUp = ContextCompat.getDrawable(mContext, R.drawable.ic_up);
+        mDown = ContextCompat.getDrawable(mContext, R.drawable.ic_down);
+
         mTickerLoader = new TickerLoader();
 
-        mTimer = new Timer();
-        mTimer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                getTicker(mCNY);
-                getKLine(mCNY);
-            }
-        }, 0, 2000);
+//        mTimer = new Timer();
+//        mTimer.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//                getTicker(mCNY);
+//                getKLine(mCNY);
+//            }
+//        }, 0, 2000);
+        EventBus.getDefault().register(this);
     }
+
+    @Subscriber
+    private void refresh(Ticker ticker) {
+        if(ticker.getTicker().getCny().equals(mCNY)) {
+            refreshTicker(ticker.getTicker());
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        EventBus.getDefault().unregister(this);
+    }
+
 
     @Override
     protected void setupView() {
@@ -102,17 +125,7 @@ public class QuotesFragment extends SimpleFragment {
         mTickerLoader.getTicker(cny).subscribe(new Action1<Ticker>() {
             @Override
             public void call(Ticker ticker) {
-                Ticker.TickerBean bean = ticker.getTicker();
-                mTvVolume.setText(getString(R.string.volume,
-                        CommonUtil.getNumStr((int) Float.parseFloat(bean.getVol()) + "")));
-                float last = Float.parseFloat(bean.getLast());
-                if (mLastPrice == 0||mLastPrice==last) {
-                    mTvPrice.setTextColor(ContextCompat.getColor(mContext, R.color.white));
-                } else {
-                    mTvPrice.setTextColor(last > mLastPrice ? Color.RED : Color.GREEN);
-                }
-                mLastPrice = last;
-                mTvPrice.setText(bean.getLast());
+                refreshTicker(ticker.getTicker());
             }
         }, new Action1<Throwable>() {
             @Override
@@ -120,6 +133,22 @@ public class QuotesFragment extends SimpleFragment {
                 CommonUtil.httpError(throwable);
             }
         });
+    }
+
+    private void refreshTicker(Ticker.TickerBean bean){
+        mTvVolume.setText(getString(R.string.volume,
+                CommonUtil.getNumStr((int) Float.parseFloat(bean.getVol()) + "")));
+        float last = Float.parseFloat(bean.getLast());
+        Drawable status = null;
+        if (mLastPrice == 0 || mLastPrice == last) {
+            mTvPrice.setTextColor(ContextCompat.getColor(mContext, R.color.white));
+        } else {
+            mTvPrice.setTextColor(last > mLastPrice ? Color.GREEN : Color.RED);
+            status = last > mLastPrice ? mUp : mDown;
+        }
+        mTvPrice.setCompoundDrawablesWithIntrinsicBounds(status, null, null, null);
+        mLastPrice = last;
+        mTvPrice.setText(bean.getLast());
     }
 
     private void getKLine(final String cny) {

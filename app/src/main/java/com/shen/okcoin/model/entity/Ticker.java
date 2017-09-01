@@ -54,6 +54,7 @@ public class Ticker {
         private String vol;
         // 添加名称
         private String name;
+        private String cny;
 
         public String getBuy() {
             return buy;
@@ -109,6 +110,14 @@ public class Ticker {
 
         public void setName(String name) {
             this.name = name;
+        }
+
+        public String getCny() {
+            return cny;
+        }
+
+        public void setCny(String cny) {
+            this.cny = cny;
         }
     }
 }

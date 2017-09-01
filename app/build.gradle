@@ -49,4 +49,6 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
     compile project(':httpLoglibrary')
+    // add AndroidEventBus dependency
+    compile 'org.simple:androideventbus:1.0.5.1'
 }

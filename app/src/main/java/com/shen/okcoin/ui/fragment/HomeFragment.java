@@ -1,11 +1,7 @@
 package com.shen.okcoin.ui.fragment;
 
-import android.content.Intent;
-import android.graphics.Canvas;
 import android.graphics.Color;
 import android.support.v4.view.ViewPager;
-import android.support.v7.view.menu.MenuAdapter;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -14,7 +10,6 @@ import android.widget.ImageView;
 import com.shen.okcoin.Constants;
 import com.shen.okcoin.R;
 import com.shen.okcoin.base.SimpleFragment;
-import com.shen.okcoin.http.Fault;
 import com.shen.okcoin.http.business.ticker.TickerLoader;
 import com.shen.okcoin.model.entity.Ticker;
 import com.shen.okcoin.ui.adapter.QuoteAdapter;
@@ -24,6 +19,8 @@ import com.shizhefei.view.indicator.FixedIndicatorView;
 import com.shizhefei.view.indicator.IndicatorViewPager;
 import com.shizhefei.view.indicator.slidebar.ColorBar;
 import com.shizhefei.view.indicator.slidebar.ScrollBar;
+
+import org.simple.eventbus.EventBus;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -159,9 +156,12 @@ public class HomeFragment extends SimpleFragment {
             @Override
             public void call(Ticker ticker) {
                 int position = Constants.CNY_LIST.indexOf(cny);
+                ticker.getTicker().setCny(cny);
                 ticker.getTicker().setName(Constants.CNY_MAP.get(cny));
                 mTickerBeen.set(position,ticker.getTicker());
                 mQuoteAdapter.notifyItemChanged(position);
+
+                EventBus.getDefault().post(ticker);
 
 //                mQuoteAdapter.notifyItemChanged(position,ticker);
             }
