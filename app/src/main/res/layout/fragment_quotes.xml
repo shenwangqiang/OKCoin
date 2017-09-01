@@ -25,7 +25,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:background="@android:color/holo_blue_dark"
         android:paddingBottom="10dp"
         android:paddingLeft="15dp"
@@ -67,5 +67,10 @@
             android:textSize="18sp"
             tools:text="8888"/>
     </RelativeLayout>
+
+    <com.shen.okcoin.ui.view.QuoteLineView
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@android:color/holo_blue_dark"/>
 
 </LinearLayout>

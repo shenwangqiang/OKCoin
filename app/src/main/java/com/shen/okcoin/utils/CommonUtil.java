@@ -1,6 +1,8 @@
 package com.shen.okcoin.utils;
 
 import android.content.Context;
+import android.support.design.widget.Snackbar;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -112,8 +114,9 @@ public class CommonUtil {
      * @param str
      * @return
      */
-    public static String getNumStr(String str){
+    public static String getNumStr(String str) {
         DecimalFormat df = new DecimalFormat("###,###");
         return df.format(Double.parseDouble(str));
     }
+
 }
