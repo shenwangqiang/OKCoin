@@ -68,7 +68,8 @@
             tools:text="8888"/>
     </RelativeLayout>
 
-    <com.shen.okcoin.ui.view.QuoteLineView
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lc_line"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="@android:color/holo_blue_dark"/>

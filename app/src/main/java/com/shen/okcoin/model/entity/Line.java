@@ -26,8 +26,8 @@ public class Line {
         this.count = array[5];
     }
 
-    public String getTime() {
-        return time;
+    public float getTime() {
+        return Long.parseLong(time);
     }
 
     public void setTime(String time) {
@@ -58,8 +58,8 @@ public class Line {
         this.low = low;
     }
 
-    public String getClose() {
-        return close;
+    public float getClose() {
+        return Float.parseFloat(close);
     }
 
     public void setClose(String close) {

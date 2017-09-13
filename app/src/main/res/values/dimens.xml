@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- quote line -->
+    <dimen name="ql_time_height">15dp</dimen>
+    <dimen name="ql_price_width">60dp</dimen>
+    <dimen name="ql_price_line_width">10dp</dimen>
+</resources>

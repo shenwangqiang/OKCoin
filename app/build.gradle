@@ -51,4 +51,6 @@ dependencies {
     compile project(':httpLoglibrary')
     // add AndroidEventBus dependency
     compile 'org.simple:androideventbus:1.0.5.1'
+    // MPAndroidChart
+    compile 'com.github.PhilJay:MPAndroidChart:v3.0.2'
 }
